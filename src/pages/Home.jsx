@@ -1,10 +1,12 @@
 import React from 'react'
+import Carousel from '../components/Carousel'
 
 const Home = () => {
   return (
-    <div>
-      Home
-    </div>
+    <>
+       {/* <img src="https://i.imgur.com/Qphac99.jpeg" alt="" /> */}
+       <Carousel/>
+    </>
   )
 }
 

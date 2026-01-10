@@ -6,12 +6,16 @@ import { FaCaretDown } from 'react-icons/fa'
 import { CgClose } from 'react-icons/cg'
 import { IoCartOutline } from 'react-icons/io5'
 import { useCart } from '../context/cartContext'
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/clerk-react'
+import { HiMenuAlt1, HiMenuAlt3 } from 'react-icons/hi'
 
 const Navbar = () => {
     const [location, setLocation] = useState(null)
     const [showAddAddress, setShowAddAddress] = useState(false)
     const [loading, setLoading] = useState(false)
     const {cartItem} = useCart()
+    const {user} = useUser()
+    const [userData, setUserData] = useState(null)
     
     
         const geoLocationData= async()=>{
@@ -34,6 +38,12 @@ const Navbar = () => {
             setShowAddAddress(false)
         }
         
+        useEffect(()=>{
+            // console.log(user)
+            setUserData(user)
+            console.log(user)
+        },[user])
+       
    
     
     
@@ -77,9 +87,27 @@ const Navbar = () => {
                         <IoCartOutline className='h-7 w-7' />
                         <span className='bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white'>{cartItem.length}</span>
                     </Link>
+                    <div className='hidden md:block ml-20'>
+                        <SignedOut>
+                            <SignInButton className="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer"/>
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
+                    </div>
+                     {/* {
+                        openNav ? <HiMenuAlt3 onClick={()=>setOpenNav(false)} className='h-7 w-7 md:hidden'/>:<HiMenuAlt1 
+                        onClick={()=>setOpenNav(true)}
+                        className='h-7 w-7 md:hidden'/>
+                    } */}
+                    
                 </nav>
+                {userData?<div className='items-center text-gray-800  shadow-2xl text-xl'>
+                    <h1 className='text'>Hello {userData.firstName}  !!</h1>
+                </div>:null}
             </div>
         </div>
+         {/* <ResponsiveMenu openNav={openNav} setOpenNav={setOpenNav}/> */}
        
     </div>
   )
