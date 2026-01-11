@@ -9,6 +9,7 @@ import Cart from './pages/Cart'
 import { CartProvider } from './context/CartContext'
 import { DataProvider } from './context/DataContext'
 import Footer from './components/Footer'
+import SingleProduct from './pages/SingleProduct'
 
 function App() {
    
@@ -21,6 +22,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Products/>}/>
+        <Route path='/products/:slug' element={<SingleProduct/>}/>
+        <Route path='/category/:category' />
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/cart' element={<Cart/>}/>

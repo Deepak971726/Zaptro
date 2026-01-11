@@ -24,7 +24,7 @@ const Navbar = () => {
                 
                 const res = await axios.get('https://ipapi.co/json/')
                 setLocation(res)
-                console.log(res)
+                // console.log(res)
                 
             } catch (error) {
                 console.log("error while fething user location", error)
@@ -41,7 +41,7 @@ const Navbar = () => {
         useEffect(()=>{
             // console.log(user)
             setUserData(user)
-            console.log(user)
+            // console.log(user)
         },[user])
        
    
