@@ -13,10 +13,10 @@ export const DataProvider = ({children})=>{
         try {
             const response = await axios.get(import.meta.env.VITE_PRODUCTS_API)
             const productData = response.data
-            console.log(response)
-            setData(productData)
-            console.log(data)
-    
+            // console.log(response)
+            await setData(productData)
+            // console.log(data)
+            // return data
             
         } catch (error) {
             console.log("something went wrong while fething products from API ::: ", error)
@@ -29,7 +29,7 @@ export const DataProvider = ({children})=>{
         })
         
         newVal = ["All",...new Set(newVal)]
-        console.log(newVal)
+        // console.log(newVal)
         return newVal
     }
     
