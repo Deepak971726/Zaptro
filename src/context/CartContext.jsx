@@ -35,14 +35,13 @@ export const CartProvider = ({ children }) => {
                     newUnit = newUnit-1;
                       toast.success("Quantity is decreased!")
                 }
-                return newUnit>0?{...item, quantity:newUnit}:null 
+                return newUnit>0?{...item, quantity:newUnit}:null
             }
             return item
         }
-        ) 
+        ).filter((item)=>item!=null) 
         
-        updatedCartItem.filter((item)=>item!=null)
-        setCartItem(updateQuantity)
+        setCartItem(updatedCartItem)
         
     }
 

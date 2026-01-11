@@ -18,17 +18,17 @@ function App() {
     <BrowserRouter>
      <CartProvider> 
       <DataProvider>
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/products' element={<Products/>}/>
-        <Route path='/products/:slug' element={<SingleProduct/>}/>
-        <Route path='/category/:category' />
-        <Route path='/about' element={<About/>}/>
-        <Route path='/contact' element={<Contact/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-      </Routes>
-      <Footer/>
+        <Navbar/>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/products' element={<Products/>}/>
+            <Route path='/products/:slug' element={<SingleProduct/>}/>
+            <Route path='/category/:category' />
+            <Route path='/about' element={<About/>}/>
+            <Route path='/contact' element={<Contact/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+          </Routes>
+        <Footer/>
       </DataProvider>
       </CartProvider>
      

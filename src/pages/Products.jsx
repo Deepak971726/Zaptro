@@ -10,6 +10,7 @@ const Products = () => {
   const [category, setCategory] = useState("ALL")
   const [priceRange, setPriceRange] = useState([0,5000])
   const [productData, setProductData] = useState()
+ 
   // const [loading, setLoading]= useState(true)
   
   
@@ -26,6 +27,7 @@ const Products = () => {
       
       
   }
+  
   
   useEffect(() => {
       const filtre = category.toLowerCase() ==='all'? data: data.filter(item => item.category.name.toLowerCase() === category.toLowerCase())
@@ -72,6 +74,8 @@ const Products = () => {
                     </div>
                   )
                 }
+                 
+ 
 
               </div>
       </div>
