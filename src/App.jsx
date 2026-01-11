@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import { CartProvider } from './context/CartContext'
 import { DataProvider } from './context/DataContext'
+import Footer from './components/Footer'
 
 function App() {
    
@@ -24,6 +25,7 @@ function App() {
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/cart' element={<Cart/>}/>
       </Routes>
+      <Footer/>
       </DataProvider>
       </CartProvider>
      

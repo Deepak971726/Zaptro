@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom'
 
 const Category = () => {
     // const {categoryOnlyData} = getData()
+    const {getUniqueCategory} = useData()
     const navigate = useNavigate()
-    const {data} = useData()
+    // const {data} = useData()
 
-    const getUniqueCategory = () =>{
-      let newVal = data?.map((curElem) =>{
-          return curElem.category.name
-      })
-      newVal = [...new Set(newVal)]
-      return newVal
-    }
+    // const getUniqueCategory = () =>{
+    //   let newVal = data?.map((curElem) =>{
+    //       return curElem.category.name
+    //   })
+    //   newVal = [...new Set(newVal)]
+    //   return newVal
+    // }
 
 
   
@@ -25,7 +26,7 @@ const Category = () => {
         {
             categoryOnlyData?.map((item, index)=>{
                 return <div key={index}>
-                    <button onClick={()=>navigate(`/category/${item}`)} className='uppercase bg-gradient-to-r from-red-500 to-purple-500 text-white px-3 py-1 rounded-md cursor-pointer'>{item}</button>
+                    <button  onClick={()=>navigate(`/category/${item}`)} className='uppercase bg-gradient-to-r from-red-500 to-purple-500 text-white px-3 py-1 rounded-md cursor-pointer'>{item}</button>
                 </div>
             })
         }
