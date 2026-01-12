@@ -3,6 +3,7 @@ import { useData } from '../context/DataContext'
 import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import FilterSection from '../components/FilterSection'
+import Pagination from '../components/pagination'
 
 const Products = () => {
   const {data, fetchAllProducts} = useData()
@@ -10,8 +11,24 @@ const Products = () => {
   const [category, setCategory] = useState("ALL")
   const [priceRange, setPriceRange] = useState([0,5000])
   const [productData, setProductData] = useState()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage, setPostPerPage] = useState(12)
+  const [currentData, setCurrentData] = useState()
  
   // const [loading, setLoading]= useState(true)
+  
+  
+  useEffect(()=>{
+    if(productData){
+            const lastPostIndex = currentPage * postPerPage
+            const firstPostIndex = lastPostIndex - postPerPage
+            setCurrentData(productData.slice(firstPostIndex,lastPostIndex))
+        }
+        else{
+            console.log("product data khali hai bhayyii")
+        }
+        console.log(currentData)
+  },[productData, currentPage])
   
   
   const handleOnChangeCategory=(e)=>{
@@ -61,12 +78,13 @@ const Products = () => {
                     <div className='flex flex-col justify-center items-center'>
                       <div className='grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-7 mt-10'>
                         {
-                          productData?.map((product, index) => {
+                          currentData?.map((product, index) => {
                             return <ProductCard key={index} product={product} />
                           })
                         }
                       </div>
-                       
+                       <Pagination totalPost={productData.length} postPerPage={postPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+     
                     </div>
                   ) : (
                     <div className='flex justify-center items-center md:h-[600px] md:w-[900px] mt-10'>
